@@ -25,6 +25,25 @@
  		
  	</insert>
  	
+ 	<insert id="insertUserByObject" parameterType="com.bbar.spring.ex.mvc.domain.User"
+ 	useGeneratedKeys="true" keyProperty="id">
+ 		INSERT INTO
+ 			`new_user`
+ 		(
+ 			`name`
+ 			, `yyyymmdd`
+ 			, `email`
+ 			, `introduce`
+ 		)
+ 		VALUE
+ 		(
+ 			#{name}
+ 			, #{yyyymmdd}
+ 			, #{email}
+ 			, #{introduce}
+ 		)
+ 	</insert>
+ 	
  	<select id="selectLastUser"
  	resultType="com.bbar.spring.ex.mvc.domain.User">
  		SELECT
