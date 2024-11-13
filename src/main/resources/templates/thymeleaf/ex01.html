@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Thymeleaf 변수와 조건문</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
 
@@ -51,15 +52,19 @@
 	
 	<h3>3. switch 문</h3>
 	<!-- 봄 따뜻하다, 여름 덥다, 가을 시원하다, 겨울 춥다. -->
-	<th:block th:with="season = '가을'">
+	<th:block th:with="season = '봄'">
 		<div th:switch="${season}">
-			<h4 th:case="봄">따뜻하다</h4>
+			<h4 class="text-warning" th:case="봄">따뜻하다</h4>
 			<h4 th:case="여름">덥다</h4>
 			<h4 th:case="가을">시원하다</h4>
 			<h4 th:case="겨울">춥다</h4>
 			<h4 th:case="*">잘못된 계절이름 입니다.</h4>
 		</div>
 	</th:block>
+	
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 </body>
 </html>
