@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>연습이오</title>
+</head>
+<body>
+
+	<h1>AJAX 테스트</h1>
+	
+	<label>이름 : </label><input type="text" id="nameInput">
+	<label>생년월일 : </label><input type="text" id="birthdayInput">
+	<button type="button" id="ajaxBtn">AJAX</button>
+	
+	<div>이름 : <span id="namespan"></span></div>
+	<div>나이 : <span id="agespan"></span></div>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+<script>
+	$(document).ready(function() {
+		
+		$("#ajaxBtn").on("click", function() {
+			$.ajax({
+				type:"get"
+				, url:"/ajax/person"
+				, data:{"name":"고길동", "birthday":"19430101"}
+				, success:function(response) {
+					// response가 정상적으로 전달될때 수행할 함수
+					console.log(response.name);
+					
+					$("#namespan").text(response.name);
+					$("#agespan").text(response.age);
+				}
+			});
+			
+		});
+	});
+</script>
+</body>
+</html>

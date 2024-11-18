@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>AJAX</title>
+</head>
+<body>
+	<h1>AJAX 테스트</h1>
+	
+	<label>이름 : </label><input type="text" id="nameInput">
+	<label>생년월일 : </label><input type="text" id="birthdayInput">
+	<button type="button" id="ajaxBtn">AJAX</button>
+	
+	<div>이름 : <span id="nameSpan"></span> </div>
+	<div>나이 : <span id="ageSpan"></span></div>	
+
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script>
+	$(document).ready(function() {
+		
+		$("#ajaxBtn").on("click", function() {
+			
+			let name = $("#nameInput").val();
+			let birthday = $("#birthdayInput").val();
+			
+			
+			// /ajax/person
+			// 이름과 생년월일을 전달해서, 이름과 나이를 전달 받는다.
+			$.ajax({
+				type:"get"
+				, url:"/ajax/person"
+				, data:{"name":name, "birthday":birthday}
+				, success:function(response) {
+					// response 가 정상적으로 전달되었을때 수행될 함수
+					// jquery ajax 함수
+					// response 로 전달된 결과는 json 문자열
+					// 문자열로 전달된 json 데이터를
+					// javascript 객체로 변환해 준다.
+					console.log(response.name);
+					
+					$("#nameSpan").text(response.name);
+					$("#ageSpan").text(response.age);
+				}
+			});
+			
+		});
+		
+	});
+</script>
+</body>
+</html>
