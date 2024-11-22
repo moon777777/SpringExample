@@ -34,4 +34,15 @@ public class UserService {
 		 
 		 return user;
 	 }
+	 
+	 public boolean isDuplicateEmail(String email) {
+		 int count = userRepository.countByEmail(email);
+		 
+		 // 여기서 중복이 된지 안된지 판단
+		 if(count > 0) {
+			 return true;
+		 } else {
+			 return false;
+		 }
+	 }
 }
